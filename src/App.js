@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import "./style.css";
+import PropTypes from 'prop-types';
+
 
 const products = [
   { price: "125", name: "product1", category: "clothes" },
@@ -13,25 +14,33 @@ const ProductTable = (props) => {
     <>
       {props.products.map((el, i) => (
         <tr key={i}>
-          <td>{el.name}</td>
-          <td>{el.price}</td>
-          <td>{el.category}</td>
+          <td style={tableStyle}>{el.name}</td>
+          <td style={tableStyle}>{el.price}</td>
+          <td style={tableStyle}>{el.category}</td>
         </tr>
       ))}
     </>
   );
 };
 
+ProductTable.propTypes = {
+  products: PropTypes.array,
+}
+
+var tableStyle = {
+  "border": "1px solid white"
+};
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <table>
+        <table style={tableStyle}>
           <thead>
             <tr>
-              <th>name</th>
-              <th>price</th>
-              <th>category</th>
+              <th style={tableStyle}>name</th>
+              <th style={tableStyle}>price</th>
+              <th style={tableStyle}>category</th>
             </tr>
           </thead>
           <tbody>
